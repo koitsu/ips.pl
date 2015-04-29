@@ -123,7 +123,7 @@ if (defined $create) {
         dprint sprintf("offset[1] = %02x", $a >> (16 - (1 * 8)) & 0xff);
         dprint sprintf("offset[2] = %02x", $a >> (16 - (2 * 8)) & 0xff);
 
-        print OUT pack("C*", $a >> (16 - (0 * 8)) & 0xff,
+        print OUT pack("C3", $a >> (16 - (0 * 8)) & 0xff,
                              $a >> (16 - (1 * 8)) & 0xff,
                              $a >> (16 - (2 * 8)) & 0xff);
 
@@ -153,8 +153,8 @@ if (defined $create) {
           dprint(sprintf "  size[0] = %02x", scalar @record >> (8 - (0 * 8)) & 0xff);
           dprint(sprintf "  size[1] = %02x", scalar @record >> (8 - (1 * 8)) & 0xff);
 
-          print OUT pack("C", scalar @record >> (8 - (0 * 8)) & 0xff);
-          print OUT pack("C", scalar @record >> (8 - (1 * 8)) & 0xff);
+          print OUT pack("C2", scalar @record >> (8 - (0 * 8)) & 0xff,
+                               scalar @record >> (8 - (1 * 8)) & 0xff);
 
           foreach (@record) {
             dprint(sprintf "   record = %02x", ord $_);
@@ -170,8 +170,8 @@ if (defined $create) {
         dprint sprintf("  size[0] = %02x", scalar @record >> (8 - (0 * 8)) & 0xff);
         dprint sprintf("  size[1] = %02x", scalar @record >> (8 - (1 * 8)) & 0xff);
 
-        print OUT pack("C", scalar @record >> (8 - (0 * 8)) & 0xff);
-        print OUT pack("C", scalar @record >> (8 - (1 * 8)) & 0xff);
+        print OUT pack("C2", scalar @record >> (8 - (0 * 8)) & 0xff,
+                             scalar @record >> (8 - (1 * 8)) & 0xff);
 
         foreach (@record) {
           dprint sprintf("   record = %02x", ord $_);
